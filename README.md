@@ -215,6 +215,7 @@ With the server running and OpenCode configured, MemPalace works automatically.
 MemPalace automatically mines conversations as you work. You can also manually mine:
 
 `mempalace mine . --mode convos`
+
 `mempalace mine . --mode convos --extract general`
 
 ---
@@ -234,8 +235,11 @@ MemPalace automatically mines conversations as you work. You can also manually m
 Use NSSM (Non-Sucking Service Manager) to run as a background service:
 
 `nssm install MemPalaceMCP`
+
 `nssm set MemPalaceMCP application "C:\Program Files\nodejs\npx.cmd"`
+
 `nssm set MemPalaceMCP arguments "mcp-proxy --port 6060 -- python -m mempalace.mcp_server"`
+
 `nssm start MemPalaceMCP`
 
 ---
@@ -245,6 +249,7 @@ Use NSSM (Non-Sucking Service Manager) to run as a background service:
 ### Server won't start (port already in use)
 
 `netstat -ano | findstr :6060`
+
 `taskkill /PID 12345 /F`
 
 ### OpenCode shows "Connection refused"
