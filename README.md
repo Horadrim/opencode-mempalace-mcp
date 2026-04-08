@@ -1,5 +1,11 @@
-# opencode-mempalace-mcp
-MemPalace MCP server config for OpenCode on Windows 11 (probably would work on other systems too). Complete setup guide, batch scripts, and OpenCode integration. Persistent AI memory with 96.6% recall. Local, free, no cloud. Search past conversations from your AI coding assistant.
+# MemPalace MCP Setup for OpenCode on Windows 11
+
+## Complete Working Guide
+
+This guide walks you through installing and configuring MemPalace as an MCP server for OpenCode on Windows 11.
+
+---
+
 ## Prerequisites
 
 - Python 3.9+ installed and accessible in PATH
@@ -75,28 +81,28 @@ echo.
 echo Press Ctrl+C to stop the server
 echo ========================================
 echo.
-```
+
 npx mcp-proxy --port 6060 -- python -m mempalace.mcp_server
 
 pause
-
+```
 ### Run the server:
 
 Double-click "start_mempalace.bat" or run in terminal:
 
-".\start_mempalace.bat"
+`.\start_mempalace.bat`
 
 ### Expected output:
-
-"[I ...] Serving MCP Servers via SSE:"
-"[I ...]   - http://127.0.0.1:6060/sse"
-"INFO:     Uvicorn running on http://127.0.0.1:6060"
-
+```
+[I ...] Serving MCP Servers via SSE:
+[I ...]   - http://127.0.0.1:6060/sse
+INFO:     Uvicorn running on http://127.0.0.1:6060
+```
 ### Verify the server is working:
 
 Open another PowerShell window and run:
 
-"curl http://localhost:6060/sse"
+`curl http://localhost:6060/sse`
 
 ### Expected response:
 
