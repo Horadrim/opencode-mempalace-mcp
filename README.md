@@ -19,11 +19,11 @@ This guide walks you through installing and configuring MemPalace as an MCP serv
 
 Open a PowerShell or Command Prompt as Administrator:
 
-"pip install mempalace"
+`pip install mempalace`
 
 Verify installation:
 
-"mempalace --version"
+`mempalace --version`
 
 Expected output: "mempalace 3.0.0" or similar.
 
@@ -33,15 +33,15 @@ Expected output: "mempalace 3.0.0" or similar.
 
 Choose a directory for your project, navigate inside it and initialize MemPalace:
 
-"mempalace init ."
+`mempalace init .`
 
 This creates the palace structure in "~/.mempalace/".
 
 ### Mine Your Existing Data
 
-"mempalace mine ."
-"mempalace mine .\chats --mode convos"
-"mempalace status"
+`mempalace mine .`
+`mempalace mine .\chats --mode convos`
+`mempalace status`
 
 ---
 
@@ -51,11 +51,11 @@ MemPalace's MCP server uses stdio transport, but OpenCode requires remote (HTTP)
 
 ### Install via npm:
 
-"npm install -g @modelcontextprotocol/mcp-proxy"
+`npm install -g @modelcontextprotocol/mcp-proxy`
 
 Or using the Python version (alternative):
 
-"pip install mcp-proxy"
+`pip install mcp-proxy`
 
 Note: The npm version is more reliable on Windows. We'll use it in this guide.
 
@@ -106,8 +106,10 @@ Open another PowerShell window and run:
 
 ### Expected response:
 
-"event: endpoint"
-"data: /messages/?session_id=6356cb572a87447d8e76b69964d57003"
+```
+event: endpoint
+data: /messages/?session_id=6356cb572a87447d8e76b69964d57003
+```
 
 ✓ If you see something similar to this, the server is running correctly!
 
@@ -120,13 +122,14 @@ Add MemPalace to your OpenCode configuration.
 ### Locate your OpenCode config file:
 
 Typically found at:
-- "%USERPROFILE%\.config\opencode\opencode.jsonc"
-- "%APPDATA%\OpenCode\config.json"
-- "~\.opencode\config.json"
-- Or within your project's ".opencode/" directory
+- `%USERPROFILE%\.config\opencode\opencode.jsonc`
+- `%APPDATA%\OpenCode\config.json`
+- `~\.opencode\config.json`
+- Or within your project's `.opencode/` directory
 
 ### Add the MemPalace server configuration:
 
+```
 {
   "mcpServers": {
     "mempalace": {
@@ -136,9 +139,9 @@ Typically found at:
     }
   }
 }
-
+```
 If your OpenCode version uses a different structure, try:
-
+```
 {
   "mcp_servers": {
     "mempalace": {
@@ -148,9 +151,9 @@ If your OpenCode version uses a different structure, try:
     }
   }
 }
-
+```
 Or for older configurations:
-
+```
 {
   "servers": {
     "mempalace": {
@@ -159,7 +162,7 @@ Or for older configurations:
     }
   }
 }
-
+```
 ### Restart OpenCode
 
 After saving the configuration, fully restart OpenCode to load the MCP server.
@@ -172,7 +175,7 @@ Once OpenCode restarts, test if MemPalace is working:
 
 ### Ask OpenCode:
 
-"Can you list all the tools available in my MemPalace MCP server?"
+`Can you list all the tools available in my MemPalace MCP server?`
 
 ### Expected response: OpenCode should list 19 MemPalace tools including:
 - mempalace_search
@@ -184,11 +187,11 @@ Once OpenCode restarts, test if MemPalace is working:
 
 ### Test a simple search:
 
-"What's the current status of my MemPalace palace?"
+`What's the current status of my MemPalace palace?`
 
 Or:
 
-"Search my memory palace for anything related to 'filter'"
+`Search my memory palace for anything related to 'filter'`
 
 ---
 
@@ -209,8 +212,8 @@ With the server running and OpenCode configured, MemPalace works automatically.
 
 MemPalace automatically mines conversations as you work. You can also manually mine:
 
-"mempalace mine . --mode convos"
-"mempalace mine . --mode convos --extract general"
+`mempalace mine . --mode convos`
+`mempalace mine . --mode convos --extract general`
 
 ---
 
@@ -228,10 +231,10 @@ MemPalace automatically mines conversations as you work. You can also manually m
 
 Use NSSM (Non-Sucking Service Manager) to run as a background service:
 
-"nssm install MemPalaceMCP"
-"nssm set MemPalaceMCP application "C:\Program Files\nodejs\npx.cmd""
-"nssm set MemPalaceMCP arguments "mcp-proxy --port 6060 -- python -m mempalace.mcp_server""
-"nssm start MemPalaceMCP"
+`nssm install MemPalaceMCP`
+`nssm set MemPalaceMCP application "C:\Program Files\nodejs\npx.cmd"`
+`nssm set MemPalaceMCP arguments "mcp-proxy --port 6060 -- python -m mempalace.mcp_server"`
+`nssm start MemPalaceMCP`
 
 ---
 
@@ -239,8 +242,8 @@ Use NSSM (Non-Sucking Service Manager) to run as a background service:
 
 ### Server won't start (port already in use)
 
-"netstat -ano | findstr :6060"
-"taskkill /PID 12345 /F"
+`netstat -ano | findstr :6060`
+`taskkill /PID 12345 /F`
 
 ### OpenCode shows "Connection refused"
 
@@ -250,19 +253,19 @@ Use NSSM (Non-Sucking Service Manager) to run as a background service:
 
 ### MemPalace commands not found
 
-"pip install --upgrade mempalace"
-"python -m mempalace --help"
+`pip install --upgrade mempalace`
+`python -m mempalace --help`
 
 ### SSE error in OpenCode
 
 Try alternative endpoint in config:
-
+```
 "url": "http://localhost:6060"
-
+```
 Or:
-
+```
 "url": "http://127.0.0.1:6060/sse"
-
+```
 ---
 
 ## Quick Reference Card
