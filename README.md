@@ -61,6 +61,7 @@ Create a batch file to easily start the server.
 
 ### Create "start_mempalace.bat" in your project directory:
 
+```
 @echo off
 title MemPalace MCP Server
 echo ========================================
@@ -74,7 +75,7 @@ echo.
 echo Press Ctrl+C to stop the server
 echo ========================================
 echo.
-
+```
 npx mcp-proxy --port 6060 -- python -m mempalace.mcp_server
 
 pause
