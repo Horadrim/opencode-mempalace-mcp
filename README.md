@@ -40,7 +40,9 @@ This creates the palace structure in "~/.mempalace/".
 ### Mine Your Existing Data
 
 `mempalace mine .`
+
 `mempalace mine .\chats --mode convos`
+
 `mempalace status`
 
 ---
